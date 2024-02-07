@@ -60,8 +60,8 @@ The set of commands above are to update the package information, install OpenJDK
 > systemctl restart  postgresql
 >
 > ```
->
-> The code above installs and configures PostgreSQL. After installation, a new database user was created called `sonar`, and a new was also created called `sonarqube`. The user was also granted all the necessary permissions on the newly created database.
+
+The code above installs and configures PostgreSQL. After installation, a new database user was created called `sonar`, and a new was also created called `sonarqube`. The user was also granted all the necessary permissions on the newly created database.
 
 > ```bash
 > sudo mkdir -p /sonarqube/
@@ -162,3 +162,22 @@ The commands above are used to create a systemd service unit file for managing t
 The code above installs and configures NGINX as a reverse proxy for SonarQube, enabling it to forward HTTP requests to the SonarQube application running on port 9000. The code also sets the firewall rules to enable Sonarqube function properly. Finally, the system is rebooted so all the changes we've made so far can take effect.
 
 In summary, the script confirgured some kernel properties in the `sysctl.conf` file, installed Java, a major requirement of sonarqube, installed PostgreSQL and then created a database as well as a database user to store reports from sonarqube. After all that has been done, Sonarqube was installed and configured to connet with the database earlier created. Finally, the script installed NGINX and configured it to server as a reverse proxy for the sonarqube application runniing on port `9000`.
+
+Now, let's run the actual script. It's recommended to install Sonarqube on a system with at least 2 processors and 4GBram,
+
+- From the linux terminal, switch to a root user and ensure the script has been confirgured to be executable.
+- Run the script by executing the command `./sonar_setup.sh`. This should take sometime and the system should reboot automatically.
+- After the system reboots, confirm sonarqube has been installed sucessfully by running the command `sudo systemctl status sonarqube`.
+  ![alt text](Images/Img_01.png)
+- Let's also confirm NGINX is installed and running using the command `sudo systemctl status nginx`
+  ![alt text](Images/Img_02.png)
+- We do the same for PostgreSQL.
+  ![alt text](Images/Img_03.png)
+- And finally, let's log into the SonarQube Server. Remember, we confirgured sonarqube to run on port `9000`, ensure your security group or firewalls are confirgured to allow traffic from that port.
+
+From a web browser, type in [YOUR-PUBLIC-IP-ADDRESS:9000] or [localhost:9000] if installed on your local computer.
+![alt text](Images/Img_04.png)
+
+And there you have it.
+
+    The username and password is `admin`. Ensure this is changed upon log in.
