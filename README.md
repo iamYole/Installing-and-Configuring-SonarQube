@@ -9,7 +9,7 @@ Let's begin...
 SonarQube installation is not as straightfoward as other software packages such as Tomcat,Java etc. To simplify this task, we will be using a `bash script` developed by
 [Visualpath](https://www.youtube.com/c/visualpath). The script has already been perfectly written to take care of everything underhood. However, it is essential we understand what exact its happening under the hood and that's what we will be exploring in this project.
 
-A copy of full `bash script` can be found here, but first, let's breakdown the script to understand the steps involved in installing and confirguring SonarQube.
+A copy of full `bash script` can be found [here](https://github.com/iamYole/Installing-and-Configuring-SonarQube/blob/main/sonar_setup.sh), but first, let's breakdown the script to understand the steps involved in installing and confirguring SonarQube.
 
 > ```bash
 > cp /etc/sysctl.conf /root/sysctl.conf_backup
